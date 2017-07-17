@@ -19,7 +19,6 @@ def modularPow(c, pow, N):
         return (c ** pow) % N
 
     pows = binaryPows(pow)
-    # TODO Ver como volver a factorizar 'pows'
     results = []
     for p in pows:
         if(p > MAX_BIN_POW):
