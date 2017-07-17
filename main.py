@@ -17,15 +17,18 @@ def binaryPows(n):
     return pows
 
 def modularPow(c, pow, N):
-    pows = binaryPows(pow)
+    MAX_BIN_POW=10
+    if pow <= 2**MAX_BIN_POW:
+        return (c ** pow) % N
 
-    print(pows)
+    pows = binaryPows(pow)
     # TODO Ver como volver a factorizar 'pows'
     results = []
     for p in pows:
-        results.append((c**(2**p)) % N)
-
-
+        if(p > MAX_BIN_POW):
+            results.append((modularPow(c, 2**(p-1), N)**2) % N)
+        else:
+            results.append(modularPow(c, 2**p, N))
 
     result = results.pop() % N
     while len(results) > 0:
@@ -35,11 +38,6 @@ def modularPow(c, pow, N):
     return result
 
 
-for i in range(10):
-    print(binaryPows(i))
-'''
-print(modularPow(c,d,N))
+print(m)
 print(modularPow(m, e, N))
-print(m**e % N)
-print((m**e % N) == modularPow(m, e, N))
-'''
+print(modularPow(c,d,N))
