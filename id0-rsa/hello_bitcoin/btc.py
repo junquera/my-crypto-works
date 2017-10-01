@@ -24,7 +24,6 @@ def generateHash(i):
   sk = SigningKey.from_secret_exponent(i,curve=SECP256k1)
   public = sk.privkey.public_key
   
-  
   pk=bytearray.fromhex("04%x%x"%(public.point.x(), public.point.y()))
   #print(pk)
   #print(hashlib.sha256(pk).hexdigest())
@@ -34,6 +33,7 @@ def generateHash(i):
   return bytearray.fromhex(hash_key)
 
 def generateBitcoinAddress(privateKey):
+    print("Testing....")
     hash_key=generateHash(privateKey)  
     checksum = hashlib.sha256(hashlib.sha256(hash_key).digest()).digest()
     address=base58.b58encode(b''.join([hash_key, checksum[:4]]))
@@ -42,6 +42,25 @@ def generateBitcoinAddress(privateKey):
 for i in range(6)[1:]:
   print("%d -> %s" % (i, generateBitcoinAddress(i)))
 
-print(generateBitcoinAddress(94176137926187438630526725483965175646602324181311814940191841477114099191175))
+pat = input('Pattern > ')
+meq = int(input('Min. eq. > '))
+
+def compare(a, b):
+    top = max(len(a), len(b))
+    for i in range(top):
+        if a[i] != b[i]:
+            return i
+    return top
+
+
+sk = SigningKey.generate(curve=SECP256k1)
+sec_exp = sk.privkey.secret_multiplier
+while compare(generateBitcoinAddress(sec_exp), pat) < meq:
+    sk = SigningKey.generate(curve=SECP256k1)
+    sec_exp = sk.privkey.secret_multiplier
+
+print("Address: %s\t-\t%s" % (generateBitcoinAddress(sec_exp), sec_exp))
+
+#print(generateBitcoinAddress(94176137926187438630526725483965175646602324181311814940191841477114099191175))
 
 
