@@ -10,6 +10,7 @@ F\%k§qe&ó$ rtly&$qrq qs htkl\%$qs rt sq Ar§&$&lykqe&ó$ tlhte
 I$z\%k§qe&ó$ l\%wkt cxs$tkqw&s&rqrtl, qstkyql n qc&l\%l rt $xtcql q§t$qmql q s\%l l&lyt§ql rt &$z\%k§qe&ó$, kte\%h&sqrql rt r&ctklql zxt$ytl rt kte\%$\%e&r\% hktly&*&\%, &$esx&rql sql hk\%h&ql.
 I§hxsl\% rt $xtcql eqhqe&rqrtl rt ktlhxtlyq q &$e&rt$ytl t$ sql AAPP. Es CCN rtlqkk\%ssqká x$ hk\%*kq§q jxt \%zktmeq sq &$z\%k§qe&ó$, z\%k§qe&ó$, kte\%§t$rqe&\%$tl n /tkkq§&t$yql $tetlqk&ql hqkq jxt sql qr§&$&lykqe&\%$tl húws&eql hxtrq$ rtlqkk\%ssqk lxl hk\%h&ql eqhqe&rqrtl rt ktlhxtlyq q &$e&rt$ytl rt lt*xk&rqr.'''
 
+msg = 'tofpkofcbebmifmZ'
 
 freq = {}
 
@@ -28,6 +29,20 @@ for f in sorted_freq:
     print("%s: %f" % (f[0], float(f[1])))
 
 res = ''
+
+'''
+f: 0.187500
+m: 0.125000
+b: 0.125000
+o: 0.125000
+z: 0.062500
+i: 0.062500
+e: 0.062500
+c: 0.062500
+k: 0.062500
+p: 0.062500
+t: 0.062500
+'''
 
 replaces = {
     'z': 'f',
@@ -52,6 +67,15 @@ replaces = {
     'w': 'b'
 }
 
+replaces['f'] = 'g'
+replaces['m'] = 'e'
+replaces['p'] = 'g'
+replaces['o'] = 's'
+replaces['z'] = 's'
+replaces['i'] = 'n'
+replaces['e'] = 'i'
+replaces['c'] = 'd'
+
 for c in msg.lower():
     if c in replaces:
         res += replaces[c]
@@ -62,4 +86,4 @@ print(res)
 
 
 
-print(res)
+print(res[::-1])

@@ -71,9 +71,11 @@ for i in range(len(msg)):
 
 passw = 'enunlugardelamanchadecuyonombrenoquieroacordarmenohamuchotiempoqueviviaunhidalgodelosdelanzaenastilleroadargaantiguarocinflacoygalgocorredorunaolladealgomasvacaquecarnerosalpiconlasmasnochesduelosyquebrantoslossabadoslentejaslosviernesalgunpalominodeanadiduralosdomingosconsumianlastrespartesdesuhacienda'
 
+passw = 'miftekmiguelmigtelmiguekligtekmigtelmiguelligtelmiguekmigtelmigtellifauelmiguelligtekmiguekmiguekmiguelmigtelmigtekmiguaelmigtdlmigtelliguekligtelmiguelliagtelmifuelligtekmigtealmigtaelliguelligteklhguelmhgtellhaguelligtelmigtekligtelligtaekmigtelligugelmiftellhgtelmigtelmhftaelmigtelligtelligtelmiguelm'
+
 deco = decode(msg, passw)
-print(deco)
+print(deco) # this is the password
 for i in bad_chars:
     deco = deco.replace(i, '')
 deco = decode(msg, deco)
-print(deco)
+# print(deco)
