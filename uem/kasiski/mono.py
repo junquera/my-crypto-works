@@ -69,6 +69,18 @@ def analiza_repetidos(t,i=2):
 
     return res
 
+def distancia_repeticiones(r):
+
+    x = [d for d in r]
+    x.sort()
+
+    distancias = []
+
+    for i in range(len(x))[1:]:
+        distancias.append(x[i] - x[i - 1])
+
+    return distancias
+
 def calcula_distancias(v):
     dist = []
     for x in range(len(v))[1:]:
