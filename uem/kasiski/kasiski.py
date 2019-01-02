@@ -23,12 +23,12 @@ for i in [2, 3]:
 
 distancias = list(set(distancias))
 distancias.sort()
-input(distancias)
 
-for key_len in distancias:
+results = []
+for key_len in distancias[:20]:
     try:
         sub_messages = []
-        print("[*] KEY LENGTH: %d" % key_len)
+        # print("[*] KEY LENGTH: %d" % key_len)
         for i in range(key_len):
             sub_messages.append(m[i::key_len])
 
@@ -46,7 +46,10 @@ for key_len in distancias:
             # c = mono.vigenere_enc(message[0], traduccion[message[0]])
             key += c
 
-        print("[*] KEY: %s" % key)
-        input(mono.vigenere_dec(m, key))
+        # print("[*] KEY: %s" % key)
+        results.append(mono.Descifrado(mono.vigenere_dec(m, key), key))
+
     except:
-        input("[x] ERROR")
+        pass
+
+print(mono.most_able(results)[0][0])

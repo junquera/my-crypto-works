@@ -187,7 +187,7 @@ def gen_translations(translations, translation):
 
         break
 
-def most_able(candidates, KEYWORDS=[]):
+def most_able(candidates, KEYWORDS=KEYWORDS):
 
     res = {}
     for c in candidates:
@@ -196,14 +196,14 @@ def most_able(candidates, KEYWORDS=[]):
             if keyword in c.text:
                 kws += 1
 
-        if english:
-            for keyword in KEYWORDS_EN:
-                if keyword in c.text:
-                    kws += 1
+        for keyword in KEYWORDS_EN:
+            if keyword in c.text:
+                kws += 1
 
         res[c] = kws
 
-    return {x[0]: x[1] for x in sorted(res.items(), key=lambda x: (x[1],x[0].text))[::-1]}
+    return [(x[0], x[1]) for x in sorted(res.items(), key=lambda x: (x[1],x[0].text))[::-1]]
+
 
 # ar = analiza_repetidos(t, i=n_gram)
 # d = {x: len(ar[x]) for x in ar}
